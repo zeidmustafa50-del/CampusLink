@@ -1,0 +1,142 @@
+/* CampusLink theme: warm paper tones + deep teal accent. Works with Bootstrap's data-bs-theme. */
+:root {
+  --accent: #0f766e;
+  --accent-hover: #115e59;
+  --accent-soft: rgba(15, 118, 110, 0.1);
+  --surface: #ffffff;
+  --page: #f7f5f0;
+  --border: #e4e0d6;
+  --muted-bg: #f0ede4;
+}
+[data-bs-theme='dark'] {
+  --accent: #2dd4bf;
+  --accent-hover: #5eead4;
+  --accent-soft: rgba(45, 212, 191, 0.12);
+  --surface: #1b2220;
+  --page: #121816;
+  --border: #2c3532;
+  --muted-bg: #222b28;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--page);
+  color: var(--bs-body-color);
+}
+h1, h2, h3, .brand, .stat-value {
+  font-family: 'Fraunces', Georgia, serif;
+  letter-spacing: -0.01em;
+}
+a { color: var(--accent); }
+a:hover { color: var(--accent-hover); }
+
+/* Navbar */
+.site-nav {
+  background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.brand { font-weight: 700; font-size: 1.35rem; color: var(--bs-body-color); display: inline-flex; align-items: center; gap: 0.5rem; }
+.brand-mark {
+  width: 30px; height: 30px; border-radius: 9px; background: var(--accent); color: #fff;
+  display: inline-grid; place-items: center; font-size: 1rem;
+}
+[data-bs-theme='dark'] .brand-mark { color: #0b1210; }
+.site-nav .nav-link { font-weight: 500; border-radius: 8px; padding: 0.4rem 0.8rem; }
+.site-nav .nav-link.active { color: var(--accent); background: var(--accent-soft); }
+
+/* Buttons */
+.btn-accent { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 500; }
+[data-bs-theme='dark'] .btn-accent { color: #0b1210; }
+.btn-accent:hover, .btn-accent:focus { background: var(--accent-hover); border-color: var(--accent-hover); color: #fff; }
+[data-bs-theme='dark'] .btn-accent:hover { color: #0b1210; }
+.btn-outline-accent { color: var(--accent); border: 1px solid var(--accent); font-weight: 500; }
+.btn-outline-accent:hover { background: var(--accent); color: #fff; }
+[data-bs-theme='dark'] .btn-outline-accent:hover { color: #0b1210; }
+.bg-accent { background: var(--accent) !important; }
+
+/* Layout helpers */
+.section { padding-top: 3rem; padding-bottom: 1rem; }
+.section-title { font-size: 1.7rem; margin-bottom: 1.5rem; }
+.eyebrow {
+  display: inline-block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent); background: var(--accent-soft); padding: 0.3rem 0.7rem; border-radius: 999px;
+}
+
+/* Cards */
+.cl-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+a .cl-card:hover, .cl-card.h-100:hover { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07); }
+.course-code { font-weight: 600; color: var(--accent); letter-spacing: 0.04em; }
+.dept-badge { background: var(--accent-soft); color: var(--accent); font-weight: 500; }
+.course-meta li { margin-bottom: 0.25rem; }
+.icon-circle {
+  width: 48px; height: 48px; border-radius: 14px; background: var(--accent-soft);
+  display: grid; place-items: center; font-size: 1.4rem;
+}
+
+/* Hero */
+.hero { padding: 4rem 0 2rem; background: radial-gradient(ellipse at 90% 0%, var(--accent-soft), transparent 55%); }
+.hero h1 { line-height: 1.1; }
+.hero-preview { box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); transform: rotate(1.5deg); }
+.mini-stat { background: var(--muted-bg); border-radius: 12px; padding: 0.8rem 0.2rem; }
+.mini-stat b { display: block; font-family: 'Fraunces', serif; font-size: 1.5rem; }
+.mini-stat span { font-size: 0.75rem; color: var(--bs-secondary-color); }
+.step-number {
+  flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: #fff;
+  display: grid; place-items: center; font-weight: 600;
+}
+[data-bs-theme='dark'] .step-number { color: #0b1210; }
+.cta-band { background: var(--accent); color: #fff; border-radius: 24px; }
+[data-bs-theme='dark'] .cta-band { color: #0b1210; }
+[data-bs-theme='dark'] .cta-band .btn-light { background: #0b1210; color: #fff; border-color: #0b1210; }
+
+/* Lists / details */
+.goal-list { list-style: none; padding: 0; margin: 0; }
+.goal-list li { position: relative; padding-left: 1.6rem; margin-bottom: 0.6rem; }
+.goal-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.detail-list { display: grid; grid-template-columns: auto 1fr; gap: 0.6rem 1rem; }
+.detail-list dt { color: var(--bs-secondary-color); font-weight: 500; }
+.detail-list dd { margin: 0; text-align: right; }
+.avatar {
+  width: 44px; height: 44px; border-radius: 50%; background: var(--accent-soft); color: var(--accent);
+  display: grid; place-items: center; font-weight: 700; font-family: 'Fraunces', serif;
+}
+.contact-info li { margin-bottom: 0.6rem; }
+
+/* Dashboard */
+.stat-value { font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1.1; }
+.score-input { width: 76px; }
+.projection { background: var(--accent-soft); border-radius: 12px; padding: 0.8rem 1rem; }
+.day-col { background: var(--muted-bg); border-radius: 12px; padding: 0.8rem; min-height: 140px; height: 100%; }
+.day-name { font-weight: 600; margin-bottom: 0.6rem; }
+.slot {
+  display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border);
+  border-left: 4px solid var(--accent); border-radius: 8px; padding: 0.5rem 0.6rem; margin-bottom: 0.5rem;
+  font-size: 0.8rem; text-decoration: none; color: var(--bs-body-color);
+}
+.slot span { color: var(--bs-secondary-color); }
+
+/* Chart */
+.gpa-chart { width: 100%; height: auto; }
+.gpa-chart .grid-line { stroke: var(--border); stroke-width: 1; }
+.gpa-chart .axis-text { fill: var(--bs-secondary-color); font-size: 11px; }
+.gpa-chart .value-text { fill: var(--bs-body-color); font-size: 11px; font-weight: 600; }
+.gpa-chart .chart-line { stroke: var(--accent); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+.gpa-chart .chart-area { fill: var(--accent-soft); }
+.gpa-chart .chart-dot { fill: var(--surface); stroke: var(--accent); stroke-width: 3; }
+
+/* Forms + footer */
+.form-control:focus, .form-select:focus { border-color: var(--accent); box-shadow: 0 0 0 0.2rem var(--accent-soft); }
+.site-footer { border-top: 1px solid var(--border); }
+
+@media (max-width: 575.98px) {
+  .section { padding-top: 2rem; }
+  .hero { padding-top: 2rem; }
+  .hero-preview { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
