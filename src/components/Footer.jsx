@@ -16,7 +16,7 @@ export default function Footer() {
             <Link to="/contact">Contact</Link>
           </div>
           <div>
-            Built with React, Vite and Bootstrap (MIT). Fonts: Fraunces and Inter (SIL OFL) via Google Fonts.
+            Built with React, Vite and Bootstrap (MIT). Fonts: Space Grotesk and Plus Jakarta Sans (SIL OFL) via Google Fonts.
           </div>
         </div>
       </div>
