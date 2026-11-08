@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { student } from '../data/student.js'
+import { defaultCoursesFor } from '../data/courses.js'
+import { facultyOfDepartment } from '../data/faculties.js'
 
 const AuthContext = createContext(null)
 
@@ -25,12 +27,16 @@ const write = (key, value) => {
  */
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => read('cl_user', null))
-  const [enrolled, setEnrolled] = useState(() => read('cl_enrolled', student.defaultEnrolled))
+  const [enrolled, setEnrolled] = useState(() => read('cl_enrolled', defaultCoursesFor(student.profile.major)))
 
   useEffect(() => write('cl_user', user), [user])
   useEffect(() => write('cl_enrolled', enrolled), [enrolled])
 
-  const login = (email) => setUser({ ...student.profile, email })
+  // The student picks a major on the login page; their starting courses follow from it.
+  const login = (email, major = student.profile.major) => {
+    setUser({ ...student.profile, email, major, faculty: facultyOfDepartment(major)?.id })
+    setEnrolled(defaultCoursesFor(major))
+  }
   const logout = () => setUser(null)
   const toggleEnroll = (id) =>
     setEnrolled((list) => (list.includes(id) ? list.filter((x) => x !== id) : [...list, id]))

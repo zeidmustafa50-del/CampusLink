@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
+import { faculties } from '../data/faculties.js'
 
 export default function Login() {
   const { user, login } = useAuth()
@@ -10,6 +11,7 @@ export default function Login() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [major, setMajor] = useState('Computer Science')
   const [error, setError] = useState('')
 
   if (user) return <Navigate to={from} replace />
@@ -18,7 +20,7 @@ export default function Login() {
     e.preventDefault()
     if (!/^\S+@\S+\.\S+$/.test(email)) return setError('Please enter a valid email address.')
     if (password.length < 4) return setError('Password must be at least 4 characters.')
-    login(email)
+    login(email, major)
     navigate(from, { replace: true })
   }
 
@@ -44,7 +46,7 @@ export default function Login() {
                   autoComplete="email"
                 />
               </div>
-              <div className="mb-4">
+              <div className="mb-3">
                 <label htmlFor="password" className="form-label">Password</label>
                 <input
                   id="password"
@@ -54,6 +56,19 @@ export default function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                   autoComplete="current-password"
                 />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="major" className="form-label">Your major</label>
+                <select id="major" className="form-select" value={major} onChange={(e) => setMajor(e.target.value)}>
+                  {faculties.map((f) => (
+                    <optgroup key={f.id} label={f.name}>
+                      {f.departments.map((d) => (
+                        <option key={d}>{d}</option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
+                <div className="form-text">Demo only: this decides which courses you start with.</div>
               </div>
               <button type="submit" className="btn btn-accent w-100">Log in</button>
             </form>

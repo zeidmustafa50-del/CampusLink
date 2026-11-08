@@ -15,7 +15,9 @@ timetable, track their GPA by semester and test grade scenarios with a GPA calcu
 
 - 8 routes: Home, About, Courses, **Course Details (dynamic `/courses/:id`)**, Contact, Login,
   Dashboard, 404
-- Search, department filter and sorting on the course catalog
+- Catalog organized into **9 faculties, 31 departments and 36 courses** (engineering, computing, business, health, sciences, arts, humanities, law and social sciences, education)
+- Filter by faculty (shareable URL like `#/courses?faculty=health`), then by department, plus search and sorting
+- Pick your major at login and the dashboard starts with matching courses
 - Enroll / drop courses (saved in `localStorage`)
 - Dashboard: stat tiles, GPA-by-semester chart (hand-written SVG), GPA calculator, weekly timetable
 - Contact form with validation
@@ -57,7 +59,7 @@ directory `dist`. No extra settings.
 src/
   components/   Navbar, Footer, CourseCard, GpaChart
   context/      ThemeContext, AuthContext (mock login + enrollment)
-  data/         courses.js, student.js (fictional data)
+  data/         faculties.js, courses.js, student.js (fictional data)
   pages/        Home, About, Courses, CourseDetails, Contact, Login, Dashboard, NotFound
   styles.css    custom theme on top of Bootstrap
 ```

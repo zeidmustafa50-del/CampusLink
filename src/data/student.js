@@ -4,9 +4,9 @@ export const student = {
     name: 'Demo Student',
     studentId: '2026-0142',
     major: 'Computer Science',
+    faculty: 'computing',
     year: 'Junior',
   },
-  defaultEnrolled: ['cs301', 'cs340', 'en210', 'ma220'],
   cumulativeGpa: 3.4,
   completedCredits: 78,
   history: [

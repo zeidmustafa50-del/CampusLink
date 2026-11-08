@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { courses } from '../data/courses.js'
+import { faculties } from '../data/faculties.js'
 import CourseCard from '../components/CourseCard.jsx'
 
 const features = [
@@ -16,7 +17,8 @@ const steps = [
 ]
 
 export default function Home() {
-  const featured = courses.slice(0, 3)
+  // One course from three different faculties, to show the catalog is not just one field.
+  const featured = ['cs301', 'md101', 'gd220'].map((id) => courses.find((c) => c.id === id)).filter(Boolean)
 
   return (
     <>
@@ -68,6 +70,27 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="container section">
+        <h2 className="section-title">Explore by faculty</h2>
+        <div className="row g-3">
+          {faculties.map((f) => {
+            const count = courses.filter((c) => c.faculty === f.id).length
+            return (
+              <div className="col-6 col-md-4" key={f.id}>
+                <Link to={`/courses?faculty=${f.id}`} className="faculty-card cl-card h-100 p-3 p-md-4">
+                  <div className="icon-circle mb-3">{f.icon}</div>
+                  <h3 className="h6 mb-1">{f.name}</h3>
+                  <p className="text-muted small mb-2 d-none d-md-block">{f.blurb}</p>
+                  <span className="small faculty-count">
+                    {f.departments.length} departments · {count} courses
+                  </span>
+                </Link>
+              </div>
+            )
+          })}
         </div>
       </section>
 

@@ -1,5 +1,6 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { getCourse } from '../data/courses.js'
+import { getFaculty } from '../data/faculties.js'
 import { useAuth } from '../context/AuthContext.jsx'
 
 // Dynamic page: the :id in /courses/:id decides which course is shown.
@@ -53,6 +54,7 @@ export default function CourseDetails() {
           <div className="cl-card p-4 sticky-lg-top" style={{ top: 90 }}>
             <dl className="detail-list mb-4">
               <dt>Instructor</dt><dd>{course.instructor}</dd>
+              <dt>Faculty</dt><dd>{getFaculty(course.faculty)?.name}</dd>
               <dt>Department</dt><dd>{course.department}</dd>
               <dt>Schedule</dt><dd>{course.days.join(' / ')} · {course.start}–{course.end}</dd>
               <dt>Room</dt><dd>{course.room}</dd>

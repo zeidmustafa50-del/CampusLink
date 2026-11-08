@@ -145,3 +145,21 @@ a .cl-card:hover, .cl-card.h-100:hover { box-shadow: var(--shadow); transform: t
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+/* Faculties */
+.faculty-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.faculty-chip {
+  border: 1px solid var(--border); background: var(--surface); color: var(--bs-body-color);
+  border-radius: 999px; padding: 0.35rem 0.9rem; font-size: 0.85rem; font-weight: 500; cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.faculty-chip:hover { border-color: var(--accent); }
+.faculty-chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+[data-bs-theme='dark'] .faculty-chip.active { color: #0b0d1a; }
+.faculty-card { display: block; text-decoration: none; color: var(--bs-body-color); }
+.faculty-card:hover { color: var(--bs-body-color); }
+.faculty-count { color: var(--accent); font-weight: 600; }
+@media (max-width: 767.98px) {
+  .faculty-bar { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.4rem; }
+  .faculty-chip { white-space: nowrap; flex: none; }
+}
